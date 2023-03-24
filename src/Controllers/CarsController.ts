@@ -29,10 +29,14 @@ export default class CarsController {
     }
   }
 
-  // async getAll(req : Request, res: Response) {
-  //   const testObj = { message: 'Ok' };
-  //   res.status(200).json(testObj);
-  // }
+  public async getAll() {
+    try {
+      const allCars = await this._carsService.getAll();
+      return this.res.status(200).json(allCars);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 
   // async getById(req : Request, res: Response) {
   //   const { id } = req.params;

@@ -27,6 +27,10 @@ class CarModel {
   public async create(car: ICar) {
     return this.model.create(car); // cria um elemento para a collecion "Cars"
   }
+
+  public async findAll() {
+    return this.model.find();
+  }
 }
 
 export default CarModel;
