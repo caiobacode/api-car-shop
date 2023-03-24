@@ -4,9 +4,9 @@ import CarsController from '../Controllers/CarsController';
 
 const carsRouter = Router();
 
-carsRouter.post('/cars', (req, res) => new CarsController().createCar(req, res));
+carsRouter.post('/cars', (req, res, next) => new CarsController(req, res, next).createCar());
 
-// carsRouter.get('/cars', (req, res) => new CarsController().getAll(req, res));
-// carsRouter.get('/cars/:id', (req, res) => new CarsController().getById(req, res));
+// carsRouter.get('/cars', (req, res) => new CarsController(req, res, next).getAll()));
+// carsRouter.get('/cars/:id', (req, res) => new CarsController(req, res, next).getById());
 
 export default carsRouter;
