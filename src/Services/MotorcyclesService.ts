@@ -16,4 +16,16 @@ export default class MotorcyclesService implements IServiceMotorcycles {
     const newMotorcycle = await motorcycleModel.create(motorcycle);
     return this.createMotorcycleDomain(newMotorcycle);
   }
+
+  async getAll(): Promise<(Motorcycle | null)[]> {
+    const motorcycleModel = new MotorcycleModel();
+    const allMotorcycles = await motorcycleModel.findAll();
+    return allMotorcycles.map((m) => this.createMotorcycleDomain(m));
+  }
+
+  async getById(id: string): Promise<Motorcycle | null> {
+    const motorcycleModel = new MotorcycleModel();
+    const oneMotorcycle = await motorcycleModel.findById(id);
+    return this.createMotorcycleDomain(oneMotorcycle);
+  }
 }

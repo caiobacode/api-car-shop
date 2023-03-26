@@ -1,12 +1,24 @@
 import { Router } from 'express';
+import MotorcycleValidate from '../middlewares/MotorcycleValidate';
 
 import MotorcycleController from '../Controllers/MotorcyclesController';
 
-const MotorcycleRouter = Router();
+const motorcycleRouter = Router();
 
-MotorcycleRouter.post(
+motorcycleRouter.post(
   '/motorcycles',
   (req, res, next) => new MotorcycleController(req, res, next).createMotorcycle(),
 );
 
-export default MotorcycleRouter;
+motorcycleRouter.get(
+  '/motorcycles', 
+  (req, res, next) => new MotorcycleController(req, res, next).getAll(),
+);
+
+motorcycleRouter.get(
+  '/motorcycles/:id', 
+  (req, res, next) => new MotorcycleValidate().validateMotorcycle(req, res, next),
+  (req, res, next) => new MotorcycleController(req, res, next).getById(),
+);
+
+export default motorcycleRouter;
