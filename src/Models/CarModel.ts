@@ -35,6 +35,10 @@ class CarModel {
   public async findById(id: string) {
     return this.model.findById(id);
   }
+
+  public async updateById(_id: string, newCar: ICar) {
+    this.model.updateOne({ _id }, { ...newCar });
+  }
 }
 
 export default CarModel;

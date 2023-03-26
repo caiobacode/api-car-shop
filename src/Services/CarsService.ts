@@ -28,4 +28,9 @@ export default class CarsService implements IServiceCars {
     const oneCar = await carModel.findById(id);
     return this.createCarDomain(oneCar);
   }
+
+  async updateById(id: string, newCar: ICar): Promise<void> {
+    const carModel = new CarModel();
+    await carModel.updateById(id, newCar);
+  }
 }
