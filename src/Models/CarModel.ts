@@ -31,6 +31,10 @@ class CarModel {
   public async findAll() {
     return this.model.find();
   }
+
+  public async findById(id: string) {
+    return this.model.findById(id);
+  }
 }
 
 export default CarModel;

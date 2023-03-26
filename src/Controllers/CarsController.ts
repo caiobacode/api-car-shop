@@ -38,9 +38,13 @@ export default class CarsController {
     }
   }
 
-  // async getById(req : Request, res: Response) {
-  //   const { id } = req.params;
-  //   const testObj = { message: 'Ok' };
-  //   res.status(200).json(testObj);
-  // }
+  public async getById() {
+    const { id } = this.req.params;
+    try {
+      const oneCar = await this._carsService.getById(id);
+      return this.res.status(200).json(oneCar);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 }

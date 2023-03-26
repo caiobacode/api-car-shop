@@ -1,12 +1,26 @@
 import { Router } from 'express';
+import CarValidate from '../middlewares/CarValidate';
 
 import CarsController from '../Controllers/CarsController';
 
 const carsRouter = Router();
 
-carsRouter.post('/cars', (req, res, next) => new CarsController(req, res, next).createCar());
-carsRouter.get('/cars', (req, res, next) => new CarsController(req, res, next).getAll());
+carsRouter.post(
+  '/cars', 
+  (req, res, next) => new CarsController(req, res, next).createCar(),
+);
 
-// carsRouter.get('/cars/:id', (req, res) => new CarsController(req, res, next).getById());
+carsRouter.get(
+  '/cars', 
+  (req, res, next) => new CarsController(req, res, next).getAll(),
+);
+
+carsRouter.get(
+  '/cars/:id', 
+  (req, res, next) => {
+    new CarValidate().validateCar(req, res, next);
+    new CarsController(req, res, next).getById();
+  },
+);
 
 export default carsRouter;
