@@ -5,4 +5,5 @@ export default interface IServiceMotorcycles {
   createMotorcycle(motorcycle: IMotorcycle): Promise<Motorcycle | null>
   getAll(): Promise<(Motorcycle | null)[]>
   getById(id: string): Promise<Motorcycle | null>
+  updateById(id: string, newMotorcycle: IMotorcycle): void
 }

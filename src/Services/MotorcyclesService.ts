@@ -28,4 +28,9 @@ export default class MotorcyclesService implements IServiceMotorcycles {
     const oneMotorcycle = await motorcycleModel.findById(id);
     return this.createMotorcycleDomain(oneMotorcycle);
   }
+
+  async updateById(id: string, newCar: IMotorcycle): Promise<void> {
+    const motorcycleModel = new MotorcycleModel();
+    await motorcycleModel.updateById(id, newCar);
+  }
 }
