@@ -42,4 +42,55 @@ const carsListMock = [
   },
 ];
 
-export { carReqMock, carResMock, carsListMock };
+const motoReqMock = {
+  model: 'hipermoto',
+  year: 2004,
+  color: 'Red',
+  status: true,
+  buyValue: 4.990,
+  category: 'sla',
+  engineCapacity: 5,
+};
+
+const motoResMock = {
+  id: '6348513f34c397abcad040b2',
+  model: 'hipermoto',
+  year: 2004,
+  color: 'Red',
+  status: true,
+  buyValue: 4.990,
+  category: 'sla',
+  engineCapacity: 5,
+};
+
+const motorsListMock = [
+  {
+    id: '6348513f34c397abcad040b2',
+    model: 'hipermoto',
+    year: 2004,
+    color: 'Red',
+    status: true,
+    buyValue: 4.990,
+    category: 'sla',
+    engineCapacity: 5,
+  },
+  {
+    id: '63485s3f34s397dbad0s40b2',
+    model: 'supermoto',
+    year: 2012,
+    color: 'Blue',
+    status: true,
+    buyValue: 9.990,
+    category: 'sla',
+    engineCapacity: 10,
+  },
+];
+
+export { 
+  carReqMock, 
+  carResMock, 
+  carsListMock, 
+  motoReqMock, 
+  motoResMock, 
+  motorsListMock, 
+};

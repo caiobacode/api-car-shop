@@ -29,6 +29,15 @@ describe('CarsService tests', function () {
     expect(response).to.be.deep.equal(carsListMock);
   });
 
+  it('create car domain - returns null', async function () {
+    Sinon.stub(Model, 'findById').resolves(false);
+    const carsService = new CarsService();
+    
+    const response = await carsService.getById('IDINVALIDOc397abcad040b2');
+    
+    expect(response).to.be.deep.equal(null);
+  });
+
   it('endpoint GET "/cars/:id"', async function () {
     Sinon.stub(Model, 'findById').resolves(carResMock);
     const carsService = new CarsService();
@@ -36,5 +45,12 @@ describe('CarsService tests', function () {
     const response = await carsService.getById('6348513f34c397abcad040b2');
     
     expect(response).to.be.deep.equal(carResMock);
+  });
+
+  it('endpoint PUT "/cars/:id"', async function () {
+    const carsService = new CarsService();
+    const response = await carsService.updateById('6348513f34c397abcad040b2', { ...carReqMock });
+    
+    expect(response).to.be.equal(undefined);
   });
 });
